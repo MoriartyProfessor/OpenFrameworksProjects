@@ -4,8 +4,7 @@
 int main() {
 
     ofGLWindowSettings settings;
-    settings.setSize(1024, 768);
-    settings.windowMode = OF_WINDOW;
+    settings.windowMode = OF_FULLSCREEN;
 
     auto window = ofCreateWindow(settings);
 

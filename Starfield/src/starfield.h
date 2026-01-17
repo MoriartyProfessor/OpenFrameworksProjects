@@ -4,28 +4,26 @@
 
 class Starfield {
   public:
-    Starfield(int width, int height, std::size_t size);
+    Starfield(std::size_t size);
     void resize(std::size_t newSize);
-    void onWindowResize(int width, int height);
     void update();
-    void draw() const;
+    void draw(int width, int height) const;
+    void setCameraSpeed(double cameraSpeed);
 
   private:
     class Star {
       public:
-        Star(int width, int height);
-        void onWindowResize(double widthRatio, double heightRatio);
-        void update();
-        void draw() const;
+        Star();
+        void update(double cameraSpeed);
+        void draw(int width, int height) const;
 
       private:
         double x = 0;
         double y = 0;
         double z = 0;
-        int r = 8;
+        double r = 0;
     };
     std::vector<Star> mStars;
-    int mWidth;
-    int mHeight;
     std::size_t mSize;
+    double mCameraSpeed = 0.01;
 };

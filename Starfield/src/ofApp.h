@@ -5,8 +5,8 @@
 
 #include "starfield.h"
 
-#include <string>
 #include <memory>
+#include <string>
 
 class ofApp : public ofBaseApp {
 
@@ -38,8 +38,13 @@ class ofApp : public ofBaseApp {
     ofxSlider<std::size_t> mNumberOfStarsSlider;
     const struct {
         std::size_t min = 0;
-        std::size_t max = 2000;
+        std::size_t max = 20000;
     } mNumberOfStarsRange;
+    ofxSlider<double> mCameraSpeedSlider;
+    const struct {
+        double min = 0.0;
+        double max = 0.5;
+    } mCameraSpeedRanger;
 
     std::unique_ptr<Starfield> mStarfield;
 };
