@@ -5,27 +5,9 @@
 #include <chrono>
 #include <random>
 
-Starfield::Starfield(std::size_t size) : mSize{size} {
-    mStars.reserve(mSize);
-    for (std::size_t i = 0; i < mSize; ++i) {
-        mStars.emplace_back();
-    }
-}
+Starfield::Starfield(std::size_t size) { resize(size); }
 
-void Starfield::resize(std::size_t size) {
-    if (size == mSize)
-        return;
-
-    if (size > mSize) {
-        mStars.reserve(size);
-        for (std::size_t i = mSize; i < size; ++i) {
-            mStars.emplace_back();
-        }
-    } else if (size < mSize) {
-        mStars.resize(size);
-    }
-    mSize = size;
-}
+void Starfield::resize(std::size_t newSize) { mStars.resize(newSize); }
 
 void Starfield::update() {
     for (auto &star : mStars) {
@@ -48,15 +30,15 @@ Starfield::Star::Star() {
         std::chrono::system_clock::now().time_since_epoch().count();
     static std::mt19937 engine(seed);
 
-    std::uniform_real_distribution<double> coordDist(-1.0, 1.0);
+    static std::uniform_real_distribution<double> coordDist(-1.0, 1.0);
 
     x = coordDist(engine);
     y = coordDist(engine);
 
-    std::uniform_real_distribution<double> zDist(2.0, 6.0);
+    static std::uniform_real_distribution<double> zDist(2.0, 6.0);
     z = zDist(engine);
 
-    std::uniform_real_distribution<double> radiusDist(2.0, 5.0);
+    static std::uniform_real_distribution<double> radiusDist(2.0, 5.0);
     r = radiusDist(engine);
 }
 

@@ -24,6 +24,5 @@ class Starfield {
         double r = 0;
     };
     std::vector<Star> mStars;
-    std::size_t mSize;
     double mCameraSpeed = 0.01;
 };
