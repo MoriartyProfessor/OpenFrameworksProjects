@@ -5,8 +5,6 @@
 #include <chrono>
 #include <random>
 
-#include <format>
-
 Starfield::Starfield(std::size_t size) : mSize{size} {
     mStars.reserve(mSize);
     for (std::size_t i = 0; i < mSize; ++i) {

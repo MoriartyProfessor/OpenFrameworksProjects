@@ -43,7 +43,7 @@ class ofApp : public ofBaseApp {
     ofxSlider<double> mCameraSpeedSlider;
     const struct {
         double min = 0.0;
-        double max = 0.5;
+        double max = 0.03;
     } mCameraSpeedRanger;
 
     std::unique_ptr<Starfield> mStarfield;

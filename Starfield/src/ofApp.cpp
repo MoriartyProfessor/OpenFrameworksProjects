@@ -39,7 +39,11 @@ void ofApp::draw() {
 
 void ofApp::exit() {}
 
-void ofApp::keyPressed(int key) {}
+void ofApp::keyPressed(int key) {
+    if (key == 'h') {
+        mDisplayGUI = !mDisplayGUI;
+    }
+}
 
 void ofApp::keyReleased(int key) {}
 
