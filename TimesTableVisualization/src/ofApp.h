@@ -1,6 +1,9 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxGui.h"
+
+#include "timestable.h"
 
 class ofApp : public ofBaseApp {
 
@@ -22,4 +25,23 @@ class ofApp : public ofBaseApp {
     void windowResized(int w, int h) override;
     void dragEvent(ofDragInfo dragInfo) override;
     void gotMessage(ofMessage msg) override;
+
+  private:
+    const std::string mName{"Times Table Visualization"};
+    ofColor mBackgroundColor{ofColor::black};
+
+    bool mDisplayGUI = true;
+    ofxPanel mGUI;
+    ofxSlider<std::size_t> mNumberOfPointsSlider;
+    const struct {
+        std::size_t min = 0;
+        std::size_t max = 2000;
+    } mNumberOfPointsRange;
+    ofxSlider<double> mFactorSlider;
+    const struct {
+        double min = 0.0;
+        double max = 10.0;
+    } mFactorRanger;
+
+    std::unique_ptr<TimesTable> mTimesTable;
 };
