@@ -1,0 +1,18 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "${workspaceRoot}/../../../../libs/openFrameworks"
+		},
+		{
+			"path": "${workspaceRoot}/../../../OpenFrameworks/of_v0.12.1_linux64_gcc6_release/addons/ofxGui"
+		},
+		{
+			"path": "${workspaceRoot}/../../../OpenFrameworks/of_v0.12.1_linux64_gcc6_release/addons/ofxUnitTests"
+		}
+	],
+	"openFrameworksProjectGeneratorVersion": "0.103.0",
+	"settings": {}
+}
