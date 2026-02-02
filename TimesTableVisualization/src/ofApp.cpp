@@ -16,11 +16,21 @@ void ofApp::setup() {
         mNumberOfPointsRange.max, 4, 20));
     mGUI.add(mFactorSlider.setup("Factor", INITIAL_FACTOR, mFactorRanger.min,
                                  mFactorRanger.max));
+    mGUI.add(mOscillate.setup("Oscillate", false));
 
     mTimesTable = std::make_unique<TimesTable>(INITIAL_NUMBER_OF_POINTS);
 }
 
 void ofApp::update() {
+    static double oscillateDirection = 1.0;
+    static constexpr double OSCILLATION_MAGNITUDE = 0.0005;
+    if (mOscillate) {
+        auto &factor = mFactorSlider.getParameter().cast<double>();
+        if (factor >= mFactorRanger.max || factor <= mFactorRanger.min) {
+            oscillateDirection *= -1.0;
+        }
+        factor += OSCILLATION_MAGNITUDE * oscillateDirection;
+    }
     mTimesTable->setNumberOfPoints(
         mNumberOfPointsSlider.getParameter().cast<std::size_t>());
     mTimesTable->setFactor(mFactorSlider.getParameter().cast<double>());

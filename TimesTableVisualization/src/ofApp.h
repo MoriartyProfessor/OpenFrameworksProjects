@@ -32,16 +32,20 @@ class ofApp : public ofBaseApp {
 
     bool mDisplayGUI = true;
     ofxPanel mGUI;
+    
     ofxSlider<std::size_t> mNumberOfPointsSlider;
     const struct {
         std::size_t min = 0;
         std::size_t max = 2000;
     } mNumberOfPointsRange;
+
     ofxSlider<double> mFactorSlider;
     const struct {
         double min = 0.0;
         double max = 10.0;
     } mFactorRanger;
+
+    ofxToggle mOscillate;
 
     std::unique_ptr<TimesTable> mTimesTable;
 };
