@@ -14,7 +14,7 @@ class TimesTable {
     void setFactor(double factor);
 
   private:
-    std::vector<ofVec2f> mPoints;
+    std::vector<glm::vec2> mPoints;
     double mFactor = 2.0;
     double mRadiusFactor = 0.9;
 };
