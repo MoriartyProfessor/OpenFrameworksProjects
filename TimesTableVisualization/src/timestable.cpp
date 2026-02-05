@@ -4,7 +4,7 @@
 
 constexpr double DOUBLE_PI = 2.0 * PI;
 
-TimesTable::TimesTable(std::size_t size) : mPoints(size) {}
+TimesTable::TimesTable(std::size_t size) : mSize(size) {}
 
 void TimesTable::update() {}
 
@@ -23,17 +23,20 @@ void TimesTable::draw(int width, int height) const {
     };
     drawCentralCircle();
 
-    for (auto i = 0; i < mPoints.size(); ++i) {
-        double angle = PI + ofMap(i, 0, mPoints.size(), 0, DOUBLE_PI);
+    for (auto i = 0; i < mSize; ++i) {
+        double angle = PI + ofMap(i, 0, mSize, 0, DOUBLE_PI);
         glm::vec2 start{glm::cos(angle) * sRadius, glm::sin(angle) * sRadius};
         glm::vec2 end{glm::cos(angle * mFactor + PI) * sRadius,
                       glm::sin(angle * mFactor + PI) * sRadius};
 
+        ofColor lineColor;
+        float hue = ofMap(i, 0, mSize, 0, 255);
+        lineColor.setHsb(hue, 200, 200);
+        ofSetColor(lineColor);
+        
         ofDrawLine(start, end);
     }
 }
 
-void TimesTable::setNumberOfPoints(std::size_t newSize) {
-    mPoints.resize(newSize);
-}
+void TimesTable::setNumberOfPoints(std::size_t newSize) { mSize = newSize; }
 void TimesTable::setFactor(double factor) { mFactor = factor; }

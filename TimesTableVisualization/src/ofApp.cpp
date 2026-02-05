@@ -9,6 +9,7 @@ void ofApp::setup() {
 
     ofSetVerticalSync(true);
     ofEnableSmoothing();
+    ofEnableAntiAliasing();
 
     mGUI.setup();
     mGUI.add(mNumberOfPointsSlider.setup(
@@ -49,6 +50,15 @@ void ofApp::exit() {}
 void ofApp::keyPressed(int key) {
     if (key == 'h') {
         mDisplayGUI = !mDisplayGUI;
+    }
+    if ((key == OF_KEY_LEFT || key == OF_KEY_RIGHT) && mOscillate == false) {
+        static constexpr double MAGNITUDE = 0.01;
+        auto direction = key == OF_KEY_LEFT ? -1.0 : 1.0;
+        auto &factor = mFactorSlider.getParameter().cast<double>();
+        auto newFactor = factor + direction * MAGNITUDE;
+        if (newFactor < mFactorRanger.max && newFactor > mFactorRanger.min) {
+            factor = newFactor;
+        }
     }
 }
 
