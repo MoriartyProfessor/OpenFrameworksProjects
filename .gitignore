@@ -38,6 +38,8 @@
 
 ## Local 
 
+obj/
+bin/
 build/**/*
 bin/*
 .vscode/
